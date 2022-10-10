@@ -152,7 +152,7 @@ cmake --build build-msys2-x64
 ```
 
 If cross compiling from linux you will probably need to add a toolchain parameter to cmake
-so that it compiles for Windows (`cmake -B build-msys2-x64 -DCMAKE_TOOLCHAIN_FILE:FILEPATH=toolchain-mingw-x64.cmake`
+so that it compiles for Windows (`cmake -B build-mingw-x64 -DCMAKE_TOOLCHAIN_FILE:FILEPATH=toolchain-mingw-x64.cmake`
 for 64 bits).
 
 
