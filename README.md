@@ -60,9 +60,9 @@ Usage example
 // we assume you already have the code to create a Window, now create
 // a custom message code that your message pump will use to pass debug events
 UINT WM_DEBUG_EVENT = RegisterWindowMessage(L"WM_DEBUG_EVENT");
+```
 
-...
-
+```
 // ~~~ debuggee process setup ~~~
 
 // we first launch a new debug loop thread
@@ -71,21 +71,23 @@ DebugLoop *debuggeeLoop = LaunchDebugLoop(hwnd, msg);
 // then, to launch a process in that thread, just do it as if using CreateProcess,
 // but using the async version that passes the extra DebugLoop* parameter
 SendCreateProcess (debuggeeLoop, your_exe, ... more params ...);
+```
 
-...
-
-// window proc
+```
+// ~~~ Event handling at Window proc ~~~
 switch (msg)
 {
 	case WM_DEBUG_EVENT:
 	{
+		// The DebugLoop that got the event is passed in wparam
 		DebugLoop *debugee = (DebugLoop*)wparam;
+		
 	    // ... handle the event ...
+	    
 	    break;
 	}
    ...
 }
-
 ```
 
 # How to build
